@@ -1,0 +1,11 @@
+<!-- sales/templates/sales/create_product.html -->
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>Create Product</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Product</button>
+  </form>
+{% endblock %}

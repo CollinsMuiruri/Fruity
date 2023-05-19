@@ -1,0 +1,10 @@
+<!-- sales/templates/sales/home.html -->
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>Home Page</h1>
+  <!-- Display summaries and analytics -->
+  <p>Total sales: ${{ total_sales }}</p>
+  <p>Number of products: {{ product_count }}</p>
+  <!-- Add more summary information here -->
+{% endblock %}

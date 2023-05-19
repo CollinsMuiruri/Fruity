@@ -1,0 +1,9 @@
+<!-- sales/templates/sales/order_detail.html -->
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>Order {{ order.id }}</h1>
+  <p>Product: {{ order.product }}</p>
+  <p>Quantity: {{ order.quantity }}</p>
+  <!-- Add more order details here -->
+{% endblock %}

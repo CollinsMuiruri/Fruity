@@ -1,0 +1,14 @@
+<!-- sales/templates/sales/payment_list.html -->
+{% extends 'sales/base.html' %}
+
+{% block content %}
+  <h1>Payment List</h1>
+  <ul>
+    {% for payment in payments %}
+      <li>{{ payment.method }}: ${{ payment.amount }}</li>
+    {% empty %}
+      <li>No payments found.</li>
+    {% endfor %}
+  </ul>
+  <p>Total amount in the shop: ${{ total_amount }}</p>
+{% endblock %}

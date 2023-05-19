@@ -1,0 +1,38 @@
+<!-- sales/templates/sales/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sales App</title>
+  <link rel="stylesheet" href="{% static 'sales/css/style.css' %}">
+</head>
+<body>
+  <header>
+    <!-- Add your header content here -->
+  </header>
+  
+  <div class="container">
+    <nav class="sidenav">
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'product_list' %}">Products</a></li>
+        <li><a href="{% url 'order_list' %}">Orders</a></li>
+        <li><a href="{% url 'payment_list' %}">Payments</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
+
+  <script src="{% static 'sales/js/script.js' %}"></script>
+</body>
+</html>
