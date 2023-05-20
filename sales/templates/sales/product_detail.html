@@ -4,6 +4,6 @@
 {% block content %}
   <h1>{{ product.name }}</h1>
   <p>Price: ${{ product.price }}</p>
-  <p>Number of units sold: {{ product.num_sold }}</p>
+  <p>Number of units sold: {{ product.get_total_sales }}</p>
   <!-- Add more product details here -->
 {% endblock %}

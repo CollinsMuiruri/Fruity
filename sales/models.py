@@ -6,6 +6,9 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     # Add more fields as per your requirements
 
+    def get_total_sales(self):
+        return self.order_set.count()
+
     def __str__(self):
         return self.name
 
@@ -13,6 +16,10 @@ class Order(models.Model):
     order_id = models.AutoField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+    payment_method = models.CharField(max_length=50, choices=(
+        ('cash', 'Cash'),
+        ('mpesa', 'MPESA'),
+    ), default='cash')
     # Add more fields as per your requirements
 
     def save(self, *args, **kwargs):
@@ -22,11 +29,11 @@ class Order(models.Model):
                 last_order_id = last_order.order_id
                 self.order_id = last_order_id + 1
             else:
-                self.order_id = 1
+                self.order_id = 1000
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return str("#"+str(self.order_id))
 
 class Payment(models.Model):
     METHOD_CHOICES = [
